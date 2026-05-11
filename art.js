@@ -1,6 +1,7 @@
 const
 canvas = document.querySelector('#canvas'),
-ctx = document.getContext('2d'),
+ctx = canvas.getContext('2d'),
+
 // drawing rectangles
 fillRect = ctx.fillRect.bind(ctx),
 strokeRect = ctx.strokeRect.bind(ctx),
@@ -86,10 +87,25 @@ resizeCanvas = () => {
   canvas.height = window.innerHeight
 },
 
+getWindowCenter = () => ({
+  x: canvas.width / 2,
+  y: canvas.height / 2
+}),
+
 art = [
-  () => {
-    
+  {
+    name: 'day 1',
+    fn: () => {
+      const center = getWindowCenter()
+      rect(center.x - 50, center.y - 50, 100, 100)
+    }
   }
 ],
 
-draw = hash => art[hash]()
+draw = hash => {
+  resizeCanvas()
+  art[hash].fn()
+}
+
+window.addEventListener('resize', draw)
+window.addEventListener('load', draw)
