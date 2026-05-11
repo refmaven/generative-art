@@ -90,6 +90,6 @@ art = [
   () => {
     
   }
-]
+],
 
-art[0]()
+draw = hash => art[hash]()
