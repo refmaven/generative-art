@@ -1,5 +1,6 @@
-
-const ctx = document.querySelector('#canvas').getContext('2d'),
+const
+canvas = document.querySelector('#canvas'),
+ctx = document.getContext('2d'),
 // drawing rectangles
 fillRect = ctx.fillRect.bind(ctx),
 strokeRect = ctx.strokeRect.bind(ctx),
@@ -80,9 +81,14 @@ setTextBaseline = value => ctx.textBaseline = value,
 setGlobalAlpha = value => ctx.globalAlpha = value,
 setGlobalCompositeOperation = value => ctx.globalCompositeOperation = value,
 
+resizeCanvas = () => {
+  canvas.width = window.innerWidth
+  canvas.height = window.innerHeight
+},
+
 art = [
   () => {
-    resizeCanvas()
+    
   }
 ]
 
